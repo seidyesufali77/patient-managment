@@ -1,5 +1,6 @@
 package com.pm.patientservice.dto;
 
+import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
@@ -13,6 +14,7 @@ public class PatientRequestDTO {
     private String name;
     @NotBlank(message = "Email cannot be blank")
     @Email(message = "Invalid email format")
+    @Column(unique = true)
     private String email;
     @NotBlank(message = "Address cannot be blank")
     private String address;

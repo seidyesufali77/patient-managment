@@ -1,13 +1,13 @@
 package com.pm.patientservice.exception;
-
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-
 import java.util.HashMap;
 import java.util.Map;
-
+@Slf4j
 @ControllerAdvice
 public class GlobalExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -17,6 +17,19 @@ public class GlobalExceptionHandler {
             errors.put(fieldError.getField(),fieldError.getDefaultMessage());
         });
         return ResponseEntity.badRequest().body(errors);
+    }
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<Map<String,String>> handleResourceNotFound(ResourceNotFoundException ex){
+        return ResponseEntity.status(HttpStatus.NOT_FOUND)
+                .body(Map.of("error", ex.getMessage()));
+    }
+    @ExceptionHandler(EmailAlreadyExist.class)
+    public ResponseEntity<Map<String,String>> handleDataIntegrityViolationException(EmailAlreadyExist ex){
+       log.warn("email already exist{}",ex.getMessage());
+        Map<String, String> errors=new HashMap<>();
+        errors.put("email", ex.getMessage());
+     return  ResponseEntity.status(HttpStatus.CONFLICT).body(errors);
+
     }
 
 
