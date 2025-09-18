@@ -1,0 +1,3 @@
+### delete  an existing system
+DELETE  http://localhost:4000/patients/1fca2827-36ca-426c-b5ad-f9c73f40995e
+###

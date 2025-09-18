@@ -3,9 +3,9 @@ POST http://localhost:4000/patients
 Content-Type: application/json
 
 {
-  "name": "seid",
-  "email": "seid@123",
-  "address": "alexanderia",
+  "name": "selwa",
+  "email": "assadsad@gggg",
+  "address": "fairfax",
   "datOfBirth": "1996-09-09",
   "registerDate": "2014-12-12"
 

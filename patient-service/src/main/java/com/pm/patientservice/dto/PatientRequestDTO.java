@@ -1,5 +1,6 @@
 package com.pm.patientservice.dto;
 
+import com.pm.patientservice.dto.validators.CreatePatientValidationGroup;
 import jakarta.persistence.Column;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -20,7 +21,7 @@ public class PatientRequestDTO {
     private String address;
     @NotNull(message = "Date of birth cannot be null")
     private String datOfBirth;
-    @NotNull(message = "Register date cannot be null")
+    @NotBlank(groups = CreatePatientValidationGroup.class, message = "Register date cannot be null")
     private String registerDate;
 
     public String getName() {

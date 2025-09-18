@@ -18,13 +18,14 @@ public class GlobalExceptionHandler {
         });
         return ResponseEntity.badRequest().body(errors);
     }
-    @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity<Map<String,String>> handleResourceNotFound(ResourceNotFoundException ex){
+    @ExceptionHandler(PatientNotFoundException.class)
+    public ResponseEntity<Map<String,String>> handleResourceNotFound(PatientNotFoundException ex){
+       log.error("patient not found",ex);
         return ResponseEntity.status(HttpStatus.NOT_FOUND)
                 .body(Map.of("error", ex.getMessage()));
     }
     @ExceptionHandler(EmailAlreadyExist.class)
-    public ResponseEntity<Map<String,String>> handleDataIntegrityViolationException(EmailAlreadyExist ex){
+    public ResponseEntity<Map<String,String>> emailAlredyExist(EmailAlreadyExist ex){
        log.warn("email already exist{}",ex.getMessage());
         Map<String, String> errors=new HashMap<>();
         errors.put("email", ex.getMessage());

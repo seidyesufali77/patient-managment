@@ -3,10 +3,9 @@ PUT http://localhost:4000/patients/58ee10f3-7e9d-4de6-9d6d-e5eeb3d42d63
 Content-Type: application/json
 
 {
-  "name": "Mohammed",
-  "email": "mohammed@123",
+  "name": "seid yesuf",
+  "email": "alli@123",
   "address": "jermany",
-  "datOfBirth": "1996-09-09",
-  "registerDate": "2014-12-12"
+  "datOfBirth": "1996-09-09"
 
 }
